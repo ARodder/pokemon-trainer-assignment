@@ -1,0 +1,57 @@
+.login-field-wrapper {
+  position: relative;
+}
+
+.login-field-frame {
+  width: 40rem;
+  height: 12rem;
+}
+
+.login-field-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  width: 36rem;
+  height: 8rem;
+}
+
+.login-field-header {
+  display: inline;
+  font-size: 2rem;
+  font-family: "Acme", sans-serif;
+}
+
+.login-field-submit{
+   cursor: pointer;
+   float: right;
+   font-family: "Acme", sans-serif;
+   margin: 0;
+}
+.login-field-input {
+  all:unset;
+  font-family: "Acme", sans-serif;
+  display: inline;
+  font-size: 2rem;
+}
+
+.login-field-submit-wrapper{
+   display: flex;
+   float: right;
+   justify-content: end;
+   width: 100%;
+}
+
+.login-field-submit-arrow{
+   color: white;
+   font-size: 32px;
+   cursor: pointer;
+}
+
+.login-field-submit-wrapper:hover > .login-field-submit-arrow {
+   color: black;
+}
+
