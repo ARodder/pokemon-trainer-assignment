@@ -12,13 +12,20 @@
   box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }
 .pokedex-back-cover{
-   z-index: -1;
+   z-index: -2;
+}
+
+.white-page-content{
+   width: calc(95% - 2rem);
+   height: calc(90% - 2rem);
+   margin: 1rem;
+   gap: 1rem;
+   display: flex;
+   flex-wrap: wrap;
 }
 
 .white-page {
   position: absolute;
-  display: flex;
-  flex-direction: column;
   height: calc(90vh - 9rem);
   aspect-ratio: 0.9;
   transform: rotateX(10deg);
@@ -27,6 +34,8 @@
   transition: all 2s;
   z-index: 1;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
 }
 
 .pokedex-open-book-button-arrow{
@@ -82,4 +91,28 @@
 
 .left-side > *{
    transform:rotateY(180deg);
+}
+
+.pokedex-prev-arrow{
+   cursor: pointer;
+   position: absolute;
+   bottom: 0;
+   right:0;
+   margin: 1rem 1rem;
+   color: #FFDE88;
+   font-size: 3rem;
+   width: 3rem;
+   height: 3rem;
+}
+
+.pokedex-next-arrow{
+   position: absolute;
+   cursor: pointer;
+   bottom: 0;
+   right: 0;
+   margin: 1rem 1rem;
+   color: #FFDE88;
+   font-size: 3rem;
+   width: 3rem;
+   height: 3rem;
 }
