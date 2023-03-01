@@ -1,0 +1,16 @@
+<div class="pokemon-display">
+  <img
+    src="../../../assets/open-pokeball.png"
+    alt="pokeball"
+    class="pokeball-background"
+  />
+  <div class="pokeball-overlay">
+    <img
+      [src]="imgUrl"
+      [alt]="pokemon.name"
+      class="pokemon-display-thumbnail"
+    />
+    <h2 class="pokemon-display-header">{{ pokemon.name }}</h2>
+  </div>
+  <mat-icon class="pokemon-delete-icon" (click)="onPokemonDelete()">delete</mat-icon>
+</div>

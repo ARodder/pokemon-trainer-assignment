@@ -1,0 +1,7 @@
+<div class="trainer-wrapper">
+   <h1 class="trainer-header">Your Collection</h1>
+   <div class="pokemon-display-container">
+      <app-pokemon-display *ngFor="let pokemon of collection; index as pokemonIndex" [pokemon]="pokemon" [pokemonIndex]="pokemonIndex" (pokemonDelete)="deletePokemon($event)"></app-pokemon-display>
+   </div>
+</div>
+
