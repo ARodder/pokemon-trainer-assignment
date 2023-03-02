@@ -1,7 +1,7 @@
 import { inject } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
 import { Subscription } from "rxjs";
-import { User } from "./shared/user.model";
+import { User } from "../shared/user.model";
 import { UserService } from "./user.service";
 
 

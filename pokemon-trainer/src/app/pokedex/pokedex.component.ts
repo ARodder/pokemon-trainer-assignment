@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../shared/pokemon.model';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
+import { PokemonService } from '../services/pokemon.service';
 
 @Component({
   selector: 'app-pokedex',
@@ -9,55 +10,17 @@ import { UserService } from '../user.service';
 })
 export class PokedexComponent implements OnInit{
   
-  constructor(private userService:UserService){}
+  constructor(private userService:UserService,private pokemonService:PokemonService){}
   pageNum: number = 0;
-  pokemons: Array<Pokemon> = [
-    {
-      name: 'ivysaur',
-      url: 'https://pokeapi.co/api/v2/pokemon/2/',
-    },
-    {
-      name: 'venusaur',
-      url: 'https://pokeapi.co/api/v2/pokemon/3/',
-    },
-    {
-      name: 'charmander',
-      url: 'https://pokeapi.co/api/v2/pokemon/4/',
-    },
-    {
-      name: 'charmeleon',
-      url: 'https://pokeapi.co/api/v2/pokemon/5/',
-    },
-    {
-      name: 'charizard',
-      url: 'https://pokeapi.co/api/v2/pokemon/6/',
-    },
-    {
-      name: 'squirtle',
-      url: 'https://pokeapi.co/api/v2/pokemon/7/',
-    },
-    {
-      name: 'wartortle',
-      url: 'https://pokeapi.co/api/v2/pokemon/8/',
-    },
-    {
-      name: 'blastoise',
-      url: 'https://pokeapi.co/api/v2/pokemon/9/',
-    },
-    {
-      name: 'caterpie',
-      url: 'https://pokeapi.co/api/v2/pokemon/10/',
-    },
-  ];
-  pages: Array<Array<Pokemon>> = [
-    this.pokemons,
-    this.pokemons,
-  ];
+  pokemons: Array<Array<Pokemon>> = [];
+  
 
-  ngOnInit(): void {
-    const localStorageUser = localStorage.getItem("user");
-    if(localStorageUser){
-      this.userService.login(JSON.parse(localStorageUser).username);
+  async ngOnInit() {
+    if(!this.userService.getUser()){
+      const localStorageUser = localStorage.getItem("user");
+      if(localStorageUser){
+        this.userService.login(JSON.parse(localStorageUser).username);
+      }
     }
   }
 
@@ -65,21 +28,31 @@ export class PokedexComponent implements OnInit{
   
   
 
-  public applyFlipForward(page: any) {
-    if (this.pageNum === 0) {
+  public async applyFlipForward(page: any) {
+    if((this.pageNum*18)-1279<18){
+      this.pageNum++;
+    }
+    if (this.pageNum === 1) {
       page.parentNode.classList.add('page-flip');
       page.parentNode.nextElementSibling.classList.add('page-flip');
     }
 
-    this.pageNum++;
+    await this.pokemonService.getPageOfPokemon(this.pageNum).then((response)=>{
+      this.pokemons = [response.results.slice(0,9),response.results.slice(9)];
+    });
   }
 
-  public applyFlipBackwards(page: any) {
-    if (this.pageNum === 1) {
+  public async applyFlipBackwards(page: any) {
+    this.pageNum--;
+    if (this.pageNum === 0) {
       page.parentNode.previousElementSibling.classList.remove('page-flip');
       page.parentNode.classList.remove('page-flip');
+    }else{
+      await this.pokemonService.getPageOfPokemon(this.pageNum).then((response)=>{
+        this.pokemons = [response.results.slice(0,9),response.results.slice(9)];
+      });
     }
 
-    this.pageNum--;
+
   }
 }

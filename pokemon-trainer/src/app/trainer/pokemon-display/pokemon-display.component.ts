@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Pokemon } from 'src/app/shared/pokemon.model';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-display',
@@ -11,10 +11,12 @@ export class PokemonDisplayComponent implements OnInit{
   @Input() pokemonIndex: number = 0;
   @Output("pokemonDelete") onDelete: EventEmitter<number> = new EventEmitter();
   imgUrl: string = "";
+  constructor(private pokemonService: PokemonService){}
   
-  ngOnInit(): void {
-    // const urlParts:Array<String> = this.pokemon.url.split("/");
-    // this.imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+urlParts[urlParts.length-2]+'.png';
+  async ngOnInit() {
+    await this.pokemonService.getPokemonDetails(this.pokemon).then((response)=>{
+      this.imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+response.id+'.png'
+    })
   }
 
   public onPokemonDelete(){

@@ -9,15 +9,16 @@
   </div>
 
   <div class="white-page left-side" id="page-1">
+    <h3>{{pageNum}}</h3>
    <div class="white-page-content">
-      <app-poke-card *ngFor="let pokemon of pages[0]" [pokemon]="pokemon"></app-poke-card>
+      <app-poke-card *ngFor="let pokemon of pokemons[0]" [pokemon]="pokemon"></app-poke-card>
    </div>
    <mat-icon class="pokedex-prev-arrow" (click)="applyFlipBackwards($event.target)">arrow_left</mat-icon>
   </div>
 
-  <div class="white-page" id="page-2">
+  <div class="white-page right-side" id="page-2">
    <div class="white-page-content">
-      <app-poke-card *ngFor="let pokemon of pages[1]" [pokemon]="pokemon"></app-poke-card>
+      <app-poke-card *ngFor="let pokemon of pokemons[1]" [pokemon]="pokemon"></app-poke-card>
    </div>
    <mat-icon class="pokedex-next-arrow" (click)="applyFlipForward($event.target)">arrow_right</mat-icon>
   </div>

@@ -40,6 +40,9 @@
   justify-content: center;
   overflow: hidden;
 }
+.right-side{
+   z-index: -1;
+}
 
 .pokedex-open-book-button-arrow{
    color: #FFDE88;
