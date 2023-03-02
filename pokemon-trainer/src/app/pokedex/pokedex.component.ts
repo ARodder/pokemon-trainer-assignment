@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../shared/pokemon.model';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-pokedex',
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.css'],
 })
-export class PokedexComponent {
+export class PokedexComponent implements OnInit{
+  
+  constructor(private userService:UserService){}
   pageNum: number = 0;
   pokemons: Array<Pokemon> = [
     {
@@ -49,35 +52,33 @@ export class PokedexComponent {
   pages: Array<Array<Pokemon>> = [
     this.pokemons,
     this.pokemons,
-    this.pokemons,
-    this.pokemons,
   ];
 
+  ngOnInit(): void {
+    const localStorageUser = localStorage.getItem("user");
+    if(localStorageUser){
+      this.userService.login(JSON.parse(localStorageUser).username);
+    }
+  }
+
+  
+  
+  
+
   public applyFlipForward(page: any) {
-    const siblingNodes = page.parentNode.parentNode.children;
-    const currentNode = siblingNodes.namedItem(this.pageNum);
-    const foundSibling = siblingNodes.namedItem(this.pageNum+1);
-    console.log(parseInt(currentNode.id)+1);
-    console.log(foundSibling);
-
-    currentNode.classList.add('page-flip');
-    foundSibling.classList.add('page-flip');
-    
-
-    
-
-    console.log(
-      page.parentNode.nextElementSibling.classList.contains('white-page')
-    );
-    console.log(page.parentNode.parentNode.children);
-
+    if (this.pageNum === 0) {
+      page.parentNode.classList.add('page-flip');
+      page.parentNode.nextElementSibling.classList.add('page-flip');
+    }
 
     this.pageNum++;
   }
 
   public applyFlipBackwards(page: any) {
-    page.parentNode.previousElementSibling.classList.remove('page-flip');
-    page.parentNode.classList.remove('page-flip');
+    if (this.pageNum === 1) {
+      page.parentNode.previousElementSibling.classList.remove('page-flip');
+      page.parentNode.classList.remove('page-flip');
+    }
 
     this.pageNum--;
   }

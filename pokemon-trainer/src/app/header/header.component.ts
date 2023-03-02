@@ -1,10 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { User } from '../shared/user.model';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit,OnDestroy{
+
+  constructor(private userService:UserService,private _router: Router){}
+  userSub?:Subscription;
+  user?:User;
+  showNav:boolean = false;
+  
+  
+  ngOnInit(): void {
+    this.userSub = this.userService.userChange.subscribe((newUser)=>{
+      this.user=newUser;
+      if(newUser.username){
+        this.showNav = true;
+      }else{
+        this.showNav = false;
+      }
+    })
+  }
+  ngOnDestroy(): void {
+    this.userSub?.unsubscribe();
+  }
+
+  public logout(){
+    this.userService.logout();
+    this._router.navigateByUrl("/");
+  }
 
 }

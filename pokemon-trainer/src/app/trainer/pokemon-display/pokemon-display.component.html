@@ -7,10 +7,10 @@
   <div class="pokeball-overlay">
     <img
       [src]="imgUrl"
-      [alt]="pokemon.name"
+      [alt]="pokemon"
       class="pokemon-display-thumbnail"
     />
-    <h2 class="pokemon-display-header">{{ pokemon.name }}</h2>
+    <h2 class="pokemon-display-header">{{ pokemon }}</h2>
   </div>
   <mat-icon class="pokemon-delete-icon" (click)="onPokemonDelete()">delete</mat-icon>
 </div>
