@@ -9,6 +9,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { TrainerComponent } from './trainer/trainer.component';
 import { PokemonDisplayComponent } from './trainer/pokemon-display/pokemon-display.component';
+import { PokedexComponent } from './pokedex/pokedex.component';
+import { PokeCardComponent } from './pokedex/poke-card/poke-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './services/user.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { PokemonService } from './services/pokemon.service';
 
 @NgModule({
   declarations: [
@@ -17,14 +23,17 @@ import { PokemonDisplayComponent } from './trainer/pokemon-display/pokemon-displ
     HeaderComponent,
     LandingPageComponent,
     TrainerComponent,
-    PokemonDisplayComponent
+    PokemonDisplayComponent,
+    PokedexComponent,
+    PokeCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService,AuthGuard,PokemonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

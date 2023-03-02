@@ -12,6 +12,19 @@
 .trainer-wrapper::-webkit-scrollbar {
    display: none;
 }
+.empty-collection-prompt{
+   flex-grow: 1;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   
+}
+.empty-collection-prompt h2{
+   font-size: 4rem;
+   font-family: "Acme", sans-serif;
+   color: rgba(0,0,0,0.5);
+   
+}
 
 
 .trainer-header{

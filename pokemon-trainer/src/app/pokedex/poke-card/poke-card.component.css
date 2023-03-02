@@ -1,0 +1,64 @@
+:host{
+   background-color: #ebb52e;
+   width: 27%;
+   height: 30%;
+   border: 5px solid #192555;
+   border-radius: 1rem;
+}
+
+.poke-card-header{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+}
+
+.poke-card{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   justify-content: center;
+}
+
+.poke-card-name{
+   margin: 0;
+   text-align: center;
+   color: white;
+   padding: 0;
+   overflow: hidden;
+   white-space: nowrap;
+   max-width: calc(100% - 2rem);
+}
+
+.pokemon-thumbnail{
+   height: 50%;
+   width: auto;
+}
+
+.add-to-collection{
+   cursor: pointer;
+}
+
+.add-to-collection:hover{
+   background-color: green;
+   border-radius: 50%;
+}
+
+.owned-pokemon-marker{
+   float: left;
+   height: 1rem;
+   width: 1rem;
+   color: white;
+   font-size: 1rem;
+   padding: .3rem .3rem;
+   min-width: 1rem;
+}
+
+.hidden{
+   opacity: 0;
+}
+
+.visible{
+   opacity: 1;
+}
+

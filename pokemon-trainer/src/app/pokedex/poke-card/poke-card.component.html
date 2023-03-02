@@ -1,0 +1,16 @@
+<div class="poke-card">
+  <div class="poke-card-header" >
+    <img
+      src="../../../assets/pokeball_2.png"
+      alt="owned"
+      class="owned-pokemon-marker"
+      [ngClass]="{'visible':collected,'hidden':!collected}"
+    />
+    <h2 class="poke-card-name">
+      {{ pokemon.name }}
+    </h2>
+    <mat-icon class="owned-pokemon-marker add-to-collection" (click)="addToCollection()">library_add</mat-icon>
+  </div>
+
+  <img [src]="imgUrl" [alt]="pokemon.name" class="pokemon-thumbnail" />
+</div>

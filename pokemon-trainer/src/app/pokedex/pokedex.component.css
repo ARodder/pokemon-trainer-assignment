@@ -1,0 +1,126 @@
+.pokedex-front-cover,
+.pokedex-back-cover {
+  height: 100%;
+  aspect-ratio: 0.9;
+  border-radius: 5px 15px 15px 5px;
+  background-color: #c76b00;
+  position: absolute;
+  transform: rotateX(10deg);
+  transform-origin: center left;
+  transition: all 2s;
+  
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+.pokedex-back-cover{
+   z-index: -2;
+}
+
+
+.white-page-content{
+   width: calc(95% - 2rem);
+   height: calc(90% - 2rem);
+   margin: 1rem;
+   gap: 1rem;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.white-page {
+  position: absolute;
+  height: calc(100% - 2rem);
+  aspect-ratio: 0.9;
+  transform: rotateX(10deg);
+  transform-origin: center left;
+  background-color: white;
+  transition: all 2s;
+  z-index: 1;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.right-side{
+   z-index: -1;
+}
+
+.pokedex-open-book-button-arrow{
+   color: #FFDE88;
+   font-size: 2rem;
+   backface-visibility: hidden;
+}
+
+.pokedex-open-book-button{
+   position: absolute;
+   margin: 1rem 3rem;
+   color: #FFDE88;
+   font-size: 1.5rem;
+   backface-visibility: hidden;
+   right: 0;
+   bottom: 0;
+   cursor: pointer;
+}
+
+.pokedex-front-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.pokedex {
+  display: flex;
+  align-items: center;
+  perspective: 1000px;
+  height: calc(85vh - 9rem);
+  
+}
+
+.page-flip{
+   transform: rotateX(10deg) rotateY(-180deg);
+   z-index: 1;
+}
+
+.pokedex-front-cover-header{
+   font-size: 2rem;
+   font-family: "Acme", sans-serif;
+   color: #843F00;
+   text-shadow: 2px 2px 3px rgba(255,255,255,0.3);
+}
+
+.pokedex-front-page-image{
+   width: 20%;
+   flex-grow: 0;
+   height: auto;
+   text-shadow: 2px 2px 3px rgba(255,255,255,0.3);
+
+}
+
+.left-side > *{
+   transform:rotateY(180deg);
+}
+
+.pokedex-prev-arrow{
+   cursor: pointer;
+   position: absolute;
+   bottom: 0;
+   right:0;
+   margin: 1rem 1rem;
+   color: #FFDE88;
+   font-size: 3rem;
+   width: 3rem;
+   height: 3rem;
+}
+
+.pokedex-next-arrow{
+   position: absolute;
+   cursor: pointer;
+   bottom: 0;
+   right: 0;
+   margin: 1rem 1rem;
+   color: #FFDE88;
+   font-size: 3rem;
+   width: 3rem;
+   height: 3rem;
+}
