@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { TrainerComponent } from './trainer/trainer.component';
 import { PokemonDisplayComponent } from './trainer/pokemon-display/pokemon-display.component';
+import { PokedexComponent } from './pokedex/pokedex.component';
+import { PokeCardComponent } from './pokedex/poke-card/poke-card.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { PokemonDisplayComponent } from './trainer/pokemon-display/pokemon-displ
     HeaderComponent,
     LandingPageComponent,
     TrainerComponent,
-    PokemonDisplayComponent
+    PokemonDisplayComponent,
+    PokedexComponent,
+    PokeCardComponent
   ],
   imports: [
     BrowserModule,

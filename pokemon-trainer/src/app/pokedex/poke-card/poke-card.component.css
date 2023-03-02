@@ -1,0 +1,21 @@
+:host{
+   background-color: #ebb52e;
+   width: 27%;
+   height: 30%;
+   border: 5px solid #192555;
+   border-radius: 1rem;
+}
+
+.poke-card{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   justify-content: center;
+}
+
+.poke-card-name{
+   margin: 0;
+   text-align: center;
+   color: white;
+}
+
