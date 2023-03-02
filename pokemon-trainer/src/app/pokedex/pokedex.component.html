@@ -1,0 +1,25 @@
+<div class="pokedex">
+  <div class="pokedex-front-cover" id="page-0">
+   <img src="../../assets/pokemon-clipart-outline-7-imptint-color.png" alt="Pikachu" class="pokedex-front-page-image"/>
+    <h2 class="pokedex-front-cover-header">Pokedex</h2>
+    <h2 class="pokedex-open-book-button" (click)="applyFlipForward($event.target)">
+      Open
+    </h2>
+  </div>
+
+  <div class="white-page left-side" id="page-1">
+    <h3>{{pageNum}}</h3>
+   <div class="white-page-content">
+      <app-poke-card *ngFor="let pokemon of pokemons[0]" [pokemon]="pokemon"></app-poke-card>
+   </div>
+   <mat-icon class="pokedex-prev-arrow" (click)="applyFlipBackwards($event.target)">arrow_left</mat-icon>
+  </div>
+
+  <div class="white-page right-side" id="page-2">
+   <div class="white-page-content">
+      <app-poke-card *ngFor="let pokemon of pokemons[1]" [pokemon]="pokemon"></app-poke-card>
+   </div>
+   <mat-icon class="pokedex-next-arrow" (click)="applyFlipForward($event.target)">arrow_right</mat-icon>
+  </div>
+  <div class="pokedex-back-cover" id="page-5"></div>
+</div>

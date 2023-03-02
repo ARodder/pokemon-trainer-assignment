@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./background.component.css']
 })
 export class BackgroundComponent {
-
+  showDawn:boolean = new Date().getHours() >= 20;
 }
