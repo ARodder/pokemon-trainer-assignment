@@ -13,6 +13,7 @@ import { PokedexComponent } from './pokedex/pokedex.component';
 import { PokeCardComponent } from './pokedex/poke-card/poke-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './user.service';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { UserService } from './user.service';
     MatIconModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

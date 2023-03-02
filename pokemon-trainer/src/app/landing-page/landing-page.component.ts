@@ -28,6 +28,7 @@ export class LandingPageComponent implements OnInit{
 
   public loginUser(){
     this.userService.login(this.currentInput);
+    setTimeout(()=>console.log("timeout"),100);
     this._router.navigateByUrl("/trainer");
   }
 
