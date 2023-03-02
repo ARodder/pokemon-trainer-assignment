@@ -3,11 +3,11 @@
    <div class="login-field-overlay">
       <div>
          <h2 class="login-field-header">Username: </h2>
-         <input type="text" class="login-field-input" placeholder="Username"/>
+         <input type="text" class="login-field-input" placeholder="Username" (change)="setUsername($event)"/>
       </div>
       <div class="login-field-submit-wrapper">
-         <mat-icon class="login-field-submit-arrow">arrow_right</mat-icon>
-         <h2 class="login-field-submit">Submit</h2>
+         <mat-icon class="login-field-submit-arrow" (click)="loginUser()">arrow_right</mat-icon>
+         <h2 class="login-field-submit" (click)="loginUser()">Submit</h2>
       </div>
    </div>
    <img src="../../assets/Pokemon_login_field-bg.png" alt="login field frame" class="login-field-frame">

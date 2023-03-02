@@ -7,14 +7,14 @@ import { Pokemon } from 'src/app/shared/pokemon.model';
   styleUrls: ['./pokemon-display.component.css']
 })
 export class PokemonDisplayComponent implements OnInit{
-  @Input() pokemon: Pokemon = new Pokemon("","");
+  @Input() pokemon: string ="";
   @Input() pokemonIndex: number = 0;
   @Output("pokemonDelete") onDelete: EventEmitter<number> = new EventEmitter();
   imgUrl: string = "";
   
   ngOnInit(): void {
-    const urlParts:Array<String> = this.pokemon.url.split("/");
-    this.imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+urlParts[urlParts.length-2]+'.png';
+    // const urlParts:Array<String> = this.pokemon.url.split("/");
+    // this.imgUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+urlParts[urlParts.length-2]+'.png';
   }
 
   public onPokemonDelete(){

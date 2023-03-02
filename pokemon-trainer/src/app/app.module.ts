@@ -11,6 +11,8 @@ import { TrainerComponent } from './trainer/trainer.component';
 import { PokemonDisplayComponent } from './trainer/pokemon-display/pokemon-display.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { PokeCardComponent } from './pokedex/poke-card/poke-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import { PokeCardComponent } from './pokedex/poke-card/poke-card.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
