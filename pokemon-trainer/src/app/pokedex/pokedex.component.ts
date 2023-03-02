@@ -8,6 +8,10 @@ import { PokemonService } from '../services/pokemon.service';
   templateUrl: './pokedex.component.html',
   styleUrls: ['./pokedex.component.css'],
 })
+/**
+ * Controls PokedexComponent retrieves all-pokemon and display them on different
+ * pages.
+ */
 export class PokedexComponent implements OnInit{
   
   constructor(private userService:UserService,private pokemonService:PokemonService){}
@@ -15,6 +19,10 @@ export class PokedexComponent implements OnInit{
   pokemons: Array<Array<Pokemon>> = [];
   
 
+  /**
+   * Retrieves the first page of pokemons, 
+   * and loads the user from the localStorage on refresh
+   */
   async ngOnInit() {
     if(!this.userService.getUser()){
       const localStorageUser = localStorage.getItem("user");
@@ -24,10 +32,14 @@ export class PokedexComponent implements OnInit{
     }
   }
 
-  
-  
-  
-
+  /**
+   * Changes the page of the pokedex forward,
+   * if it is the first page it applies 
+   * an animation. And divides the pokemons
+   * over both displayed pages.
+   * 
+   * @param page element pressed
+   */
   public async applyFlipForward(page: any) {
     if((this.pageNum*18)-1279<18){
       this.pageNum++;
@@ -42,6 +54,14 @@ export class PokedexComponent implements OnInit{
     });
   }
 
+  /**
+   * Changes the page of the pokedex backward,
+   * if it is the first page it applies 
+   * an animation. Also divides the pokemons
+   * over both displayed pages.
+   * 
+   * @param page element pressed
+   */
   public async applyFlipBackwards(page: any) {
     this.pageNum--;
     if (this.pageNum === 0) {

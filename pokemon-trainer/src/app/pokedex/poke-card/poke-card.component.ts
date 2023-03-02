@@ -9,6 +9,10 @@ import { User } from 'src/app/shared/user.model';
   templateUrl: './poke-card.component.html',
   styleUrls: ['./poke-card.component.css']
 })
+/**
+ * Controls the PokeCardComponent and displays different pokemons with name
+ * and picture.
+ */
 export class PokeCardComponent implements OnInit{
   @Input() pokemon:Pokemon = new Pokemon("","");
   constructor(private userService:UserService){}
@@ -17,7 +21,11 @@ export class PokeCardComponent implements OnInit{
   userSub?:Subscription;
   collected:boolean = false;
 
-
+  /**
+   * Initiates the user subscription used to determine if a pokemon
+   * is part of a users collection, and generates the url for the pokemons
+   * image.
+   */
   ngOnInit(): void {
     this.userSub = this.userService.userChange.subscribe((newUser)=>{
       this.user=newUser;
@@ -29,6 +37,9 @@ export class PokeCardComponent implements OnInit{
     this.collected = this.user!.pokemon?.includes(this.pokemon.name) ?? false;
   }
 
+  /**
+   * Adds pokemon to collection by calling addPokemon from userService
+   */
   public addToCollection(){
     this.userService.addPokemon(this.pokemon.name);
   }

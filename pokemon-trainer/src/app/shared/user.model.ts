@@ -1,5 +1,7 @@
-import { Pokemon } from "./pokemon.model";
 
+/**
+ * User used to represent the structure for the user from the translation-api
+ */
 export class User{
    id?:number;
    username?: string;
