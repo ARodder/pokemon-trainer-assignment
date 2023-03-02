@@ -12,8 +12,9 @@ import { PokemonDisplayComponent } from './trainer/pokemon-display/pokemon-displ
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { PokeCardComponent } from './pokedex/poke-card/poke-card.component';
 import { HttpClientModule } from '@angular/common/http';
-import { UserService } from './user.service';
-import { AuthGuard } from './auth-guard.service';
+import { UserService } from './services/user.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { PokemonService } from './services/pokemon.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AuthGuard } from './auth-guard.service';
     MatIconModule,
     HttpClientModule
   ],
-  providers: [UserService,AuthGuard],
+  providers: [UserService,AuthGuard,PokemonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

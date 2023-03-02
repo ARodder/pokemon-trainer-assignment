@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from '../shared/user.model';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -28,8 +28,6 @@ export class LandingPageComponent implements OnInit{
 
   public loginUser(){
     this.userService.login(this.currentInput);
-    setTimeout(()=>console.log("timeout"),100);
-    this._router.navigateByUrl("/trainer");
   }
 
 }

@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User } from './shared/user.model';
+import { User } from '../shared/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -10,7 +11,7 @@ export class UserService {
   private user?: User;
   private changeSubscription?: Subscription;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.changeSubscription = this.userChange.subscribe((newUser) => {
       if (newUser.username) {
         localStorage.setItem('user', JSON.stringify(newUser));
@@ -61,6 +62,7 @@ export class UserService {
         } else {
           this.createNewUser(username);
         }
+        this.router.navigateByUrl('/pokedex');
       });
   }
 
@@ -76,7 +78,7 @@ export class UserService {
         {
           id: this.user?.id,
           username: this.user?.username,
-          pokemon: [this.user?.pokemon, newPokemon],
+          pokemon: this.user?.pokemon?.concat(newPokemon),
         },
         httpOptions
       )

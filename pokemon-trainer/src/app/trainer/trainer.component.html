@@ -1,6 +1,7 @@
 <div class="trainer-wrapper">
    <h1 class="trainer-header">Your Collection</h1>
-   <div class="pokemon-display-container">
+   <div *ngIf="user!.pokemon!.length===0" class="empty-collection-prompt"><h2 >Your Collection is empty</h2></div>
+   <div class="pokemon-display-container" *ngIf="user!.pokemon!.length!==0">
       <app-pokemon-display *ngFor="let pokemon of user!.pokemon; index as pokemonIndex" [pokemon]="pokemon" [pokemonIndex]="pokemonIndex" (pokemonDelete)="deletePokemon($event)"></app-pokemon-display>
    </div>
 </div>

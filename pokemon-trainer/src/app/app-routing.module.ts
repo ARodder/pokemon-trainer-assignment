@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { canActivateTeam } from './auth-guard.service';
+import { canActivateTeam } from './services/auth-guard.service';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { PokedexComponent } from './pokedex/pokedex.component';
 import { TrainerComponent } from './trainer/trainer.component';
