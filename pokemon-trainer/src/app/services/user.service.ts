@@ -6,6 +6,10 @@ import { environment } from 'src/environments/environment';
 import { User } from '../shared/user.model';
 
 @Injectable({ providedIn: 'root' })
+/**
+ * Service to control all interaction between trainer-api
+ * and front-end application.
+ */
 export class UserService {
   userChange = new Subject<User>();
   private user?: User;
@@ -21,15 +25,27 @@ export class UserService {
     });
   }
 
+  /**
+   * Get the current state of the user
+   * @returns state of the user
+   */
   public getUser() {
     return this.user;
   }
 
+  /**
+   * Sets the state of the user.
+   * @param user new state of the user
+   */
   public setUser(user: User) {
     this.user = user;
     this.userChange.next(this.user);
   }
 
+  /**
+   * Creates a new user in the trainer-api.
+   * @param username name of the new user to create
+   */
   public createNewUser(username: string) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -51,6 +67,12 @@ export class UserService {
       });
   }
 
+  /**
+   * Logs in to the trainer-api if there is an existing user with the given username
+   * else it creates a new user. 
+   * 
+   * @param username username to login
+   */
   public login(username: string) {
     this.http
       .get<Array<User>>(environment.apiUrl + '/trainers?username=' + username)
@@ -65,7 +87,12 @@ export class UserService {
         this.router.navigateByUrl('/pokedex');
       });
   }
-
+  /**
+   * Adds a new pokemon to the user and updates the 
+   * trainer-api.
+   * 
+   * @param newPokemon new pokemon to add
+   */
   public addPokemon(newPokemon: string) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -88,6 +115,12 @@ export class UserService {
       });
   }
 
+   /**
+   * Removes a pokemon to the user and updates the 
+   * trainer-api.
+   * 
+   * @param pokemonIndex index of the pokemon to remove
+   */
   public removePokemon(pokemonIndex: number) {
     this.user?.pokemon?.splice(pokemonIndex, 1);
     const httpOptions = {
@@ -111,6 +144,9 @@ export class UserService {
       });
   }
 
+  /**
+   * Logs a user out by clearing the localStorage.
+   */
   public logout() {
     this.user = {};
     this.userChange.next(this.user);
