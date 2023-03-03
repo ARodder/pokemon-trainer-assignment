@@ -64,6 +64,7 @@ export class UserService {
         if (this.user) {
           this.userChange.next(this.user);
         }
+        this.router.navigateByUrl('/pokedex');
       });
   }
 
@@ -81,10 +82,11 @@ export class UserService {
           this.user = response[0];
           this.userChange.next(this.user);
           console.log(this.user);
+          this.router.navigateByUrl('/pokedex');
         } else {
           this.createNewUser(username);
         }
-        this.router.navigateByUrl('/pokedex');
+        
       });
   }
   /**
